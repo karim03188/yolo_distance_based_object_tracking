@@ -270,7 +270,10 @@ while True:
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (b, 0, r), 1)
 
             # for draw circle and lable the selected object
-            cv2.circle(frame, (cx, cy), 8, (b, g, r), -1)
+            cv2.circle(frame, (cx, cy), 20, (b, g, r), 2)
+            cv2.circle(frame, (cx, cy), 8, (b, g, r), 1)
+            cv2.line(frame, (cx - 14, cy), (cx + 14, cy), (b, g, r), 2)
+            cv2.line(frame, (cx, cy - 14), (cx, cy + 14), (b, g, r), 2)
 
             # for change direction of camera
             print(f'Camera track object {clicked_obj_id}')
@@ -301,34 +304,34 @@ while True:
                 for i in range(len(rout)-1):
                     start_x, start_y = rout[i]
                     stop_x, stop_y = rout[i+1]
-                    cv2.line(frame, (start_x, start_y),(stop_x, stop_y), (255, 0, 0), 1)
+                    cv2.line(frame, (start_x, start_y),(stop_x, stop_y), (0, 0, 255), 3)
 
 
     center_point_objs_last_frame = center_points_cur_frame.copy()
 
 
-    cv2.rectangle(frame, (0, 0), (325, 100),
-                  (255, 255, 255), thickness=cv2.FILLED)
+    cv2.rectangle(frame, (0, 0), (345, 130),
+                  (0, 0, 0), thickness=cv2.FILLED)
 
     text = 'Left click: Choice object for tracking'
-    cv2.putText(frame, text, (2, 12),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
+    cv2.putText(frame, text, (5, 18),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 1)
 
     text = 'Left double click: select any area point'
-    cv2.putText(frame, text, (2, 30),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
+    cv2.putText(frame, text, (5, 42),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 1)
 
     text = 'Esc key: exit'
-    cv2.putText(frame, text, (2, 50),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
+    cv2.putText(frame, text, (5, 66),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 1)
 
     text = 'Right Click: show history line'
-    cv2.putText(frame, text, (2, 70),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
+    cv2.putText(frame, text, (5, 90),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 1)
 
     text = 'Right double Click: hide history line'
-    cv2.putText(frame, text, (2, 90),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1)
+    cv2.putText(frame, text, (5, 114),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 1)
 
     cv2.imshow("window", frame)
 
